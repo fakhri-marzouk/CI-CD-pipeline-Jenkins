@@ -3,12 +3,12 @@ pipeline{
   stages{
     stage('build'){
       steps{
-        echo 'building the app '
+        bat 'mvn clean install'
       }
     }
     stage('test'){
       steps{
-        echo 'testing the app'
+        bat 'mvn test'
       }
     }
   }
