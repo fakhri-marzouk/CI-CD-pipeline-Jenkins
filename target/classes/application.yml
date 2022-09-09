@@ -1,0 +1,21 @@
+server:
+  port: 8084
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    password: NAJWA5ouloud
+    url: jdbc:postgresql://localhost:5432/DevOpsBootCamp
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        show_sql: true
