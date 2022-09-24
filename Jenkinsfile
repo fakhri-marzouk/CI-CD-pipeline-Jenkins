@@ -25,10 +25,20 @@ pipeline {
          stage("Build docker image"){
                     steps{
                         script{
-                            bat "docker build -t lexicography ."
+                            bat "docker build -t gomycode ."
                         }
                     }
                  }
+          stage("Push docker image to dockerhub"){
+                     steps{
+                         withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                             bat "docker login -u fakhri1999 -p ${dockerhubpwd}"
+                             bat "docker tag gomycode fakhri1999/gomycode:pipline"
+                             bat "docker push fakhri1999/gomycode:pipline"
+                         }
+                     }
+                  }
+
         stage("Publish to Nexus Repository Manager") {
                     steps {
                         script {
