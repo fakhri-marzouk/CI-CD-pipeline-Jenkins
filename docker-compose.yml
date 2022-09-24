@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql_dbgmc:5432/gomycode
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8084:8084"
+    volumes:
+      - .:/app
+    depends_on:
+      - PostgreSQL
+    networks:
+      - spring
+  PostgreSQL:
+    container_name: postgresql_dbgmc
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=gomycode
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - spring
+  pgadmin:
+    container_name: pgadmingmc
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=fakhrimarzouki199@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=123456789
+    ports:
+      - 5050:80
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - PostgreSQL
+    networks:
+      - spring
+volumes:
+  postgres:
+  pgadmin-data:
+networks:
+  spring:
+    driver: bridge
+
