@@ -1,22 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.backend.DevopsBootCampApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.892 s <<< FAILURE! - in com.backend.DevopsBootCampApplicationTests
-test  Time elapsed: 0.007 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.yaml.snakeyaml.scanner.ScannerException: 
-mapping values are not allowed here
- in 'reader', line 9, column 17:
-            password: password
-                    ^
-
-
-contextLoads  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.yaml.snakeyaml.scanner.ScannerException: 
-mapping values are not allowed here
- in 'reader', line 9, column 17:
-            password: password
-                    ^
-
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.383 s - in com.backend.DevopsBootCampApplicationTests

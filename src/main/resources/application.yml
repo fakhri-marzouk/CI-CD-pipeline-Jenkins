@@ -1,12 +1,13 @@
 server:
   port: 8084
 spring:
-  spring:
-    datasource:
-      hikari:
-      url: jdbc:postgresql://postgresql_dbgmc:5432/gomycode
-      username: postgres
-      password: password
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    password: NAJWA5ouloud
+    url: jdbc:postgresql://localhost:5432/DevOpsBootCamp
+    username: postgres
   jpa:
     hibernate:
       ddl-auto: update
