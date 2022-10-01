@@ -16,12 +16,16 @@ pipeline {
                 bat 'mvn clean install -Dmaven.test.skip=true'
             }
         }
-        stage('Testing'){
-            steps{
-                //sonarqube
-                bat 'mvn test  -DskipTests'
-            }
-        }
+         stage('SonarQube analysis') {
+                //def scannerHome = tool 'SonarScanner 4.0';
+                     steps{
+                         withSonarQubeEnv('sonarqube-9.5') {
+
+                             bat "mvn sonar:sonar "
+
+                         }
+                    }
+                  }
          stage("Build docker image"){
                     steps{
                         script{
