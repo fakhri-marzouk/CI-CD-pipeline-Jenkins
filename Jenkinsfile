@@ -83,4 +83,16 @@ pipeline {
                     }
                 }
     }
+    post {
+                    success {
+                         mail to: "fakhrimarzouki199@gmail.com",
+                         subject: "success",
+                         body: "success on job"
+                    }
+            failure {
+                        mail to: "fakhrimarzouki199@gmail.com",
+                         subject: "Failure",
+                         body: "Failure on job"
+                    }
+                }
 }
