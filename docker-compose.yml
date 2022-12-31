@@ -29,11 +29,11 @@ services:
     networks:
       - spring
   pgadmin:
-    container_name: pgadmingmc
+    container_name: pgadmingmc/jenkins
     image: dpage/pgadmin4
     environment:
-      - PGADMIN_DEFAULT_EMAIL=fakhrimarzouki199@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=123456789
+      - PGADMIN_DEFAULT_EMAIL=admin
+      - PGADMIN_DEFAULT_PASSWORD=admin
     ports:
       - 5050:80
     volumes:
