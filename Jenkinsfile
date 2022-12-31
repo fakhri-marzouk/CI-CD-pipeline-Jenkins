@@ -17,12 +17,9 @@ pipeline {
             }
         }
          stage('SonarQube analysis') {
-                //def scannerHome = tool 'SonarScanner 4.0';
                      steps{
                          withSonarQubeEnv('sonarqube-9.5') {
-
                              bat "mvn sonar:sonar "
-
                          }
                     }
                   }
@@ -33,12 +30,19 @@ pipeline {
                         }
                     }
                  }
+         stage ("Docker Compose"){
+            steps{
+                script{
+                    bat "docker-compose -d up"
+                }
+            }
+         }
           stage("Push docker image to dockerhub"){
                      steps{
                          withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                              bat "docker login -u fakhri1999 -p ${dockerhubpwd}"
-                             bat "docker tag gomycode fakhri1999/gomycode:pipline"
-                             bat "docker push fakhri1999/gomycode:pipline"
+                             bat "docker tag gomycode fakhri1999/gomycode:pipeline"
+                             bat "docker push fakhri1999/gomycode:pipeline"
                          }
                      }
                   }
