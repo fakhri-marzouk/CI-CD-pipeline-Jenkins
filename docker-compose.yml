@@ -3,7 +3,7 @@ services:
   app:
     build: .
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql_dbgmc:5432/gomycode
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/gomycode
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
@@ -16,7 +16,7 @@ services:
     networks:
       - spring
   PostgreSQL:
-    container_name: postgresql_dbgmc
+    container_name: postgresql
     image: postgres
     ports:
       - 5432:5432
